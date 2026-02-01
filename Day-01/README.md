@@ -19,4 +19,3 @@ This project is a multi-page HTML5 website created as part of an academic assign
 - Speaker profiles and sponsor tiers
 - Fully responsive meta setup
 
-## Folder Structure
