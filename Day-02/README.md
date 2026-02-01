@@ -29,7 +29,4 @@ Day 2 focuses on upgrading the Day 1 basic site into a professional, semantic, a
 - Used proper relative file paths
 - Organized assets into images and videos folders
 
----
-
-## 📁 Project Structure
 
