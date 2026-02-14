@@ -1,19 +1,316 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=JetBrains+Mono:wght@700&display=swap');
+/* =====================================================
+   DEVCONF 2026 — FINAL STYLES (DAY 4 + DAY 5)
+   Advanced Layout + Polish + Responsive Design
+===================================================== */
 
-body {
-    margin: 0; background: #000; color: #fff;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    display: flex; align-items: center; justify-content: center; height: 100vh;
+/* ===== CSS VARIABLES ===== */
+:root {
+  --primary: #f97316;
+  --dark: #111827;
+  --gray: #4b5563;
+  --bg-light: #f9fafb;
+
+  --fs-xl: 2.5rem;
+  --fs-lg: 2rem;
+  --fs-md: 1.2rem;
+
+  --spacing-lg: 50px;
+  --spacing-md: 30px;
+
+  --radius: 12px;
 }
 
-.lab-container { text-align: center; max-width: 500px; }
-h1 { font-size: 2.5rem; letter-spacing: -2px; margin-bottom: 20px; }
-h1 span { color: #f97316; }
-p { color: #666; font-size: 0.9rem; margin-bottom: 40px; }
+/* ===== RESET ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-.debug-panel {
-    background: #111; border: 1px solid #222; 
-    padding: 20px; border-radius: 15px;
-    font-family: 'JetBrains Mono'; color: #f97316;
-    font-size: 0.8rem; text-transform: uppercase;
+body {
+  font-family: sans-serif;
+  background: var(--bg-light);
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+/* =====================================================
+   NAVIGATION — FLEXBOX + GLASS EFFECT
+===================================================== */
+
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.25rem 2rem;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+
+.logo span {
+  color: var(--primary);
+}
+
+.flex-menu {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+.flex-menu a {
+  text-decoration: none;
+  color: var(--gray);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.flex-menu a:hover,
+.flex-menu a.active {
+  color: var(--primary);
+  opacity: 0.8;
+}
+
+/* =====================================================
+   HERO SECTION + ANIMATION
+===================================================== */
+
+.gradient-hero {
+  background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 120px 20px;
+  text-align: center;
+}
+
+.hero-content {
+  animation: heroFadeSlide 1s ease forwards;
+}
+
+@keyframes heroFadeSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-btns {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.btn {
+  padding: 12px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn.primary {
+  background: var(--primary);
+  color: white;
+  animation: pulseGlow 2s infinite;
+}
+
+.btn.secondary {
+  border: 1px solid white;
+  color: white;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+/* Pulse Animation */
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 0 rgba(249,115,22,0.6); }
+  70% { box-shadow: 0 0 0 15px rgba(249,115,22,0); }
+  100% { box-shadow: 0 0 0 0 rgba(249,115,22,0); }
+}
+
+/* =====================================================
+   SECTION TITLES
+===================================================== */
+
+.section-title {
+  text-align: center;
+  font-size: var(--fs-lg);
+  margin-top: 60px;
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: var(--primary);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* =====================================================
+   GRID LAYOUTS
+===================================================== */
+
+.grid-layout,
+.speaker-grid {
+  display: grid;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 20px;
+}
+
+.grid-layout {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.speaker-grid {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* =====================================================
+   CARDS
+===================================================== */
+
+.info-card,
+.speaker-card {
+  background: white;
+  padding: 30px;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.info-card:hover,
+.speaker-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 25px -5px rgba(0,0,0,0.15);
+}
+
+.image-wrapper img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--primary);
+  margin-bottom: 20px;
+}
+
+.badg {
+  background: #ffedd5;
+  color: #9a3412;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  border-radius: 20px;
+  font-weight: 700;
+}
+
+/* =====================================================
+   SCHEDULE TIMELINE
+===================================================== */
+
+.timeline {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.time-item {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.time-marker {
+  font-weight: 800;
+  color: var(--primary);
+  min-width: 80px;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer {
+  text-align: center;
+  padding: 40px;
+  background: var(--dark);
+  color: #94a3b8;
+}
+
+/* =====================================================
+   RESPONSIVE DESIGN
+===================================================== */
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+
+  .nav-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .flex-menu {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .grid-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .speaker-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-btns {
+    flex-direction: column;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+}
+
+/* ===== TABLET ===== */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  .grid-layout {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .speaker-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ===== DESKTOP ===== */
+@media (min-width: 1024px) {
+
+  .grid-layout {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
