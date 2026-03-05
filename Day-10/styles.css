@@ -1,0 +1,119 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+background:#fafafa;
+}
+
+/* LOGIN */
+
+.container{
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.login-box{
+background:white;
+padding:40px;
+border:1px solid #ddd;
+width:350px;
+text-align:center;
+}
+
+.login-box h1{
+margin-bottom:20px;
+}
+
+.input-group{
+position:relative;
+margin-bottom:20px;
+}
+
+.input-group input{
+width:100%;
+padding:10px;
+border:1px solid #ccc;
+outline:none;
+}
+
+.input-group label{
+position:absolute;
+top:10px;
+left:10px;
+color:#777;
+transition:0.3s;
+pointer-events:none;
+}
+
+.input-group input:focus + label,
+.input-group input:valid + label{
+top:-10px;
+font-size:12px;
+color:#3897f0;
+}
+
+button{
+width:100%;
+padding:10px;
+background:#3897f0;
+border:none;
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+background:#2d7edb;
+}
+
+
+/* TEAM SECTION */
+
+.team{
+padding:60px;
+text-align:center;
+}
+
+.team-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:30px;
+margin-top:40px;
+}
+
+.card{
+position:relative;
+padding:20px;
+border:1px solid #ddd;
+background:white;
+}
+
+.card img{
+width:100px;
+border-radius:50%;
+}
+
+.social{
+position:absolute;
+bottom:0;
+left:0;
+right:0;
+background:#000000cc;
+color:white;
+display:flex;
+justify-content:center;
+gap:15px;
+padding:10px;
+opacity:0;
+transition:0.3s;
+}
+
+.card:hover .social{
+opacity:1;
+}
