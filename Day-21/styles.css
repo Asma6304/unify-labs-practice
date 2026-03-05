@@ -1,0 +1,37 @@
+body{
+
+font-family:Arial;
+background:#f1f5f9;
+color:#111;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+
+}
+
+.container{
+
+background:white;
+padding:30px;
+border-radius:10px;
+width:350px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+
+}
+
+.setting{
+
+display:flex;
+justify-content:space-between;
+margin:15px 0;
+
+}
+
+.dark{
+
+background:#0f172a;
+color:white;
+
+}
